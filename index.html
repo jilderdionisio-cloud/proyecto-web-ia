@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="Explorador interactivo de personajes de Rick and Morty."
+    >
+    <title>Explorador interactivo de información</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header class="encabezado">
+      <div class="contenedor encabezado__contenido">
+        <a class="logo" href="#inicio">Explorador IA</a>
+
+        <nav class="navegacion" aria-label="Navegación principal">
+          <a href="#personajes">Personajes</a>
+          <a href="#favoritos">Favoritos</a>
+        </nav>
+
+        <button
+          id="boton-tema"
+          class="boton-tema"
+          type="button"
+          aria-label="Cambiar entre tema claro y oscuro"
+          aria-pressed="false"
+        >
+          Cambiar tema
+        </button>
+      </div>
+    </header>
+
+    <main id="inicio">
+      <section class="presentacion" aria-labelledby="titulo-principal">
+        <div class="contenedor">
+          <p class="etiqueta">Rick and Morty API</p>
+          <h1 id="titulo-principal">Explorador interactivo de información</h1>
+          <p>
+            Busca personajes, aplica filtros y guarda tus resultados favoritos.
+          </p>
+        </div>
+      </section>
+
+      <section class="controles seccion" aria-labelledby="titulo-busqueda">
+        <div class="contenedor">
+          <h2 id="titulo-busqueda">Explora personajes</h2>
+
+          <form id="formulario-busqueda" class="formulario-busqueda">
+            <label for="buscador">Buscar por nombre</label>
+            <div class="formulario-busqueda__grupo">
+              <input
+                id="buscador"
+                name="nombre"
+                type="search"
+                placeholder="Ejemplo: Rick"
+                autocomplete="off"
+              >
+              <button type="submit">Buscar</button>
+            </div>
+          </form>
+
+          <div class="filtros" aria-label="Filtros y orden de resultados">
+            <div class="campo-filtro">
+              <label for="filtro-estado">Estado</label>
+              <select id="filtro-estado" name="estado">
+                <option value="">Todos</option>
+                <option value="alive">Vivo</option>
+                <option value="dead">Muerto</option>
+                <option value="unknown">Desconocido</option>
+              </select>
+            </div>
+
+            <div class="campo-filtro">
+              <label for="filtro-especie">Especie</label>
+              <select id="filtro-especie" name="especie">
+                <option value="">Todas</option>
+                <option value="Human">Humano</option>
+                <option value="Alien">Alienígena</option>
+                <option value="Robot">Robot</option>
+                <option value="Humanoid">Humanoide</option>
+              </select>
+            </div>
+
+            <div class="campo-filtro">
+              <label for="ordenar-por">Ordenar por</label>
+              <select id="ordenar-por" name="orden">
+                <option value="nombre-asc">Nombre: A a Z</option>
+                <option value="nombre-desc">Nombre: Z a A</option>
+                <option value="id-asc">Identificador: menor a mayor</option>
+                <option value="id-desc">Identificador: mayor a menor</option>
+              </select>
+            </div>
+
+            <button id="boton-limpiar" type="button">Limpiar controles</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="mensajes" aria-live="polite" aria-label="Estado de la búsqueda">
+        <div class="contenedor">
+          <p id="mensaje-carga" hidden>Cargando personajes...</p>
+          <p id="mensaje-error" role="alert" hidden></p>
+          <p id="mensaje-vacio" hidden>
+            No se encontraron personajes con esos criterios.
+          </p>
+        </div>
+      </section>
+
+      <section id="personajes" class="seccion" aria-labelledby="titulo-personajes">
+        <div class="contenedor">
+          <h2 id="titulo-personajes">Personajes</h2>
+          <div
+            id="contenedor-personajes"
+            class="grid-personajes"
+            aria-label="Lista de personajes"
+          >
+            <!-- JavaScript agregará aquí las tarjetas desde la API. -->
+          </div>
+        </div>
+      </section>
+
+      <section id="favoritos" class="seccion favoritos" aria-labelledby="titulo-favoritos">
+        <div class="contenedor">
+          <h2 id="titulo-favoritos">Mis favoritos</h2>
+          <p>Los favoritos se conservarán en este navegador.</p>
+          <div
+            id="contenedor-favoritos"
+            class="grid-personajes"
+            aria-label="Lista de personajes favoritos"
+          >
+            <!-- JavaScript mostrará aquí los favoritos de localStorage. -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="pie-pagina">
+      <div class="contenedor">
+        <p>Proyecto académico: Explorador interactivo de información.</p>
+        <p>
+          Datos obtenidos de
+          <a href="https://rickandmortyapi.com/" target="_blank" rel="noopener noreferrer">
+            Rick and Morty API
+          </a>.
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
