@@ -2,8 +2,6 @@
 
 Aplicación web que consulta la **Rick and Morty API** para buscar personajes, filtrarlos, ordenarlos y guardar favoritos. Es un proyecto académico hecho con HTML, CSS y JavaScript puros, con apoyo de herramientas de inteligencia artificial.
 
-> Las secciones marcadas con **✏️ Por completar** necesitan información que solo el equipo conoce. No se rellenaron para no inventar experiencias.
-
 ## 1. Objetivo
 
 Practicar el consumo de una API pública con `fetch`, la manipulación del DOM, el uso de `localStorage` y el diseño adaptable, trabajando en equipo con Git y GitHub.
@@ -176,8 +174,6 @@ En la primera versión de `style.css`, la IA generó un encabezado fijo (*sticky
 
 Corrección aplicada: en pantallas pequeñas el encabezado deja de ser fijo y ocupa dos filas, y las tarjetas pasan a formato horizontal (imagen a la izquierda, datos a la derecha). Además, se redujo el texto del botón de favoritos, que se partía en dos líneas en tableta.
 
-✏️ Si el equipo tuvo otras respuestas de IA que corregir, pueden agregarlas aquí.
-
 ## 10. Un error real y cómo se resolvió
 
 **Error:** el botón "Cambiar tema" existía en el HTML, pero no hacía nada (Issue #2). Al revisar `script.js` se vio que no había ningún `addEventListener` para `#boton-tema`.
@@ -231,7 +227,17 @@ Para mí, la IA funciona mejor cuando le damos instrucciones claras, revisamos s
 
 ### Alex Dionisio Rojas (`jilderdionisio-cloud`)
 
-✏️ **Por completar con sus propias palabras.**
+Concuerdo con mi compañera en que la IA es de gran ayuda. Puede seguir impulsando nuestro avance como desarrolladores y permitirnos crear proyectos con mayor calidad y de manera eficaz. Con esta herramienta podemos agilizar el tiempo de cada uno de nuestros proyectos.
+
+En mi parte trabajé solo con el editor web de GitHub, sin instalar programas, y la IA me guió paso a paso: desde crear el repositorio hasta la estructura de `index.html`, la consulta a la API, la búsqueda, los filtros y los favoritos.
+
+Algunas cosas que aprendí:
+
+- **Avanzar por partes funciona mejor.** Le pedí primero solo la estructura inicial y guardarla con su propio commit antes de seguir. Así cada avance quedó registrado y era más fácil de revisar.
+- **Pedir explicaciones sencillas me ayuda a entender.** Le pedí que me explicara cada sección con palabras simples para poder defender el proyecto en clase, no solo copiar el código.
+- **Hay que verificar lo que dice la IA.** En mis prompts le pedí que no afirmara haber hecho un commit si no aparecía en el repositorio, porque lo importante es lo que de verdad queda guardado en GitHub.
+
+La IA no reemplaza nuestro trabajo: nos ayuda a hacerlo más rápido y mejor, siempre que revisemos y entendamos lo que hacemos.
 
 ## 13. Contribuciones
 
