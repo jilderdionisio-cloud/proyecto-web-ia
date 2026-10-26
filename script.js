@@ -107,6 +107,8 @@ function crearTarjetaPersonaje(personaje) {
   const botonFavorito = document.createElement("button");
 
   tarjeta.className = "tarjeta-personaje";
+  // data-estado permite a style.css colorear el indicador (alive, dead o unknown).
+  tarjeta.dataset.estado = textoSeguro(personaje.status, "unknown").toLowerCase();
   contenido.className = "tarjeta-personaje__contenido";
   titulo.textContent = textoSeguro(personaje.name);
 
@@ -124,6 +126,8 @@ function crearTarjetaPersonaje(personaje) {
   botonFavorito.type = "button";
   botonFavorito.className = "boton-favorito";
   botonFavorito.dataset.id = String(personaje.id);
+  // data-favorito permite a style.css mostrar la estrella rellena si ya es favorito.
+  botonFavorito.dataset.favorito = String(esFavorito(personaje.id));
   botonFavorito.textContent = esFavorito(personaje.id)
     ? "Quitar de favoritos"
     : "Agregar a favoritos";
