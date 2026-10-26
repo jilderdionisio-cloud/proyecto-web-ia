@@ -329,6 +329,16 @@ button {
   border-color: var(--color-secundario);
 }
 
+/* Modo oscuro activo: el botón se ve "presionado" */
+.boton-tema[aria-pressed="true"] {
+  border-color: var(--color-acento);
+  background-color: var(--color-fondo-alterno);
+}
+
+.boton-tema[aria-pressed="true"]::before {
+  color: var(--color-acento);
+}
+
 /* -------------------------------------------------------------------------
    4. Presentación (hero)
    ------------------------------------------------------------------------- */
