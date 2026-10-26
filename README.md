@@ -150,19 +150,25 @@ Tomadas del historial de commits del repositorio.
 
 ## 14. Pruebas realizadas
 
-| # | Prueba | Resultado | Cómo se probó |
-|---|---|---|---|
-| 1 | Carga de personajes | ✅ | API real (consulta directa) y página con datos simulados |
-| 2 | Búsqueda por nombre | ✅ | API real: `?name=smith` → 19 resultados; página con datos simulados |
-| 3 | Filtros estado y especie | ✅ | Datos simulados (individuales y combinados) |
-| 4 | Orden A-Z y Z-A | ✅ | Datos simulados |
-| 5 | Agregar y quitar favoritos | ✅ | Datos simulados |
-| 6 | Favoritos tras recargar | ✅ | Datos simulados |
-| 7 | Tema tras recargar | ✅ | Claro → oscuro → recarga → oscuro; vuelta a claro también persiste |
-| 8 | Error y sin resultados | ✅ | API real: búsqueda sin coincidencias responde 404; error 500 simulado |
-| 9 | Diseño adaptable | ✅ | 320, 375, 768, 1024 y 1440 px, sin scroll horizontal |
-| 10 | Errores de JavaScript | ✅ | Ningún error de JavaScript durante las pruebas |
+Las pruebas se hicieron en tres etapas:
 
-Las pruebas de la página se ejecutaron automáticamente con Playwright (Chromium) y respuestas simuladas con el mismo formato que la API real. **Falta probar en celulares reales y en Firefox o Safari**, y repetir las pruebas en la URL de GitHub Pages.
+- **A. Automáticas:** con Playwright (Chromium) y respuestas simuladas con el mismo formato que la API.
+- **B. En la URL pública, con la API real:** <https://jilderdionisio-cloud.github.io/proyecto-web-ia/>, el 25/10/2026, en un navegador Chromium de escritorio.
+- **C. En un celular real:** Motorola Edge 50 Pro con Chrome, en orientación vertical y horizontal.
+
+| # | Prueba | Resultado | Dónde se probó |
+|---|---|---|---|
+| 1 | Carga de personajes | ✅ | A, B (20 personajes) y C |
+| 2 | Búsqueda por nombre | ✅ | A y B ("smith" → 19 resultados, todos contienen "Smith") |
+| 3 | Filtros de estado y especie | ✅ | A (individuales y combinados) y B (Muerto sobre "smith" → 1) |
+| 4 | Orden A-Z y Z-A | ✅ | A y B |
+| 5 | Agregar y quitar favoritos | ✅ | A, B y C |
+| 6 | Favoritos tras recargar | ✅ | A y B |
+| 7 | Tema tras recargar | ✅ | A y B (claro ↔ oscuro se conserva al recargar); en C el modo oscuro se ve bien |
+| 8 | Error y sin resultados | ✅ | B ("zzzz" → mensaje "sin resultados"); el error de servidor solo se simuló en A |
+| 9 | Diseño adaptable | ✅ | A (320 a 1440 px, sin scroll horizontal), B (375 px emulado) y C (vertical y horizontal) |
+| 10 | Errores de JavaScript | ✅ | A y B: ningún error de JavaScript (solo el aviso de red 404 esperado al buscar sin resultados) |
+
+**Falta probar:** Firefox y Safari (iPhone).
 
 Limitación conocida: los filtros solo actúan sobre los primeros 20 personajes que devuelve la API (Issue #3).
