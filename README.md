@@ -150,19 +150,25 @@ Tomadas del historial de commits del repositorio.
 
 ## 14. Pruebas realizadas
 
-| # | Prueba | Resultado | Cómo se probó |
-|---|---|---|---|
-| 1 | Carga de personajes | ✅ | API real (consulta directa) y página con datos simulados |
-| 2 | Búsqueda por nombre | ✅ | API real: `?name=smith` → 19 resultados; página con datos simulados |
-| 3 | Filtros estado y especie | ✅ | Datos simulados (individuales y combinados) |
-| 4 | Orden A-Z y Z-A | ✅ | Datos simulados |
-| 5 | Agregar y quitar favoritos | ✅ | Datos simulados |
-| 6 | Favoritos tras recargar | ✅ | Datos simulados |
-| 7 | Tema tras recargar | ✅ | Claro → oscuro → recarga → oscuro; vuelta a claro también persiste |
-| 8 | Error y sin resultados | ✅ | API real: búsqueda sin coincidencias responde 404; error 500 simulado |
-| 9 | Diseño adaptable | ✅ | 320, 375, 768, 1024 y 1440 px, sin scroll horizontal |
-| 10 | Errores de JavaScript | ✅ | Ningún error de JavaScript durante las pruebas |
+Se hicieron tres rondas de pruebas:
 
-Las pruebas de la página se ejecutaron automáticamente con Playwright (Chromium) y respuestas simuladas con el mismo formato que la API real. **Falta probar en celulares reales y en Firefox o Safari**, y repetir las pruebas en la URL de GitHub Pages.
+- **A. Automáticas (Playwright, Chromium):** con respuestas simuladas con el mismo formato que la API real.
+- **B. URL pública con la API real:** en https://jilderdionisio-cloud.github.io/proyecto-web-ia/ (25/10/2026), desde un navegador de escritorio.
+- **C. Celular real:** Motorola Edge 50 Pro, en la URL pública.
+
+| # | Prueba | Resultado | Dónde |
+|---|---|---|---|
+| 1 | Carga de personajes | ✅ | A, B (20 personajes), C |
+| 2 | Búsqueda por nombre | ✅ | A, B ("smith" → 19 resultados) |
+| 3 | Filtros estado y especie | ✅ | A (individuales y combinados), B ("smith" + Muerto) |
+| 4 | Orden A-Z y Z-A | ✅ | A, B |
+| 5 | Agregar y quitar favoritos | ✅ | A, B (agregar), C (favoritos visibles) |
+| 6 | Favoritos tras recargar | ✅ | A, B |
+| 7 | Tema y su persistencia | ✅ | A, B (claro ↔ oscuro y recarga), C (modo oscuro activo) |
+| 8 | Error y sin resultados | ✅ | B ("zzzz" → mensaje sin resultados), A (error 500 simulado) |
+| 9 | Diseño adaptable | ✅ | A (320, 375, 768, 1024 y 1440 px), B (375 px emulado), C (vertical y horizontal) |
+| 10 | Errores de JavaScript | ✅ | A, B: ningún error de JavaScript; solo el aviso de red 404, esperado en la búsqueda sin resultados |
+
+**Pendiente:** probar en Firefox y Safari (iPhone).
 
 Limitación conocida: los filtros solo actúan sobre los primeros 20 personajes que devuelve la API (Issue #3).
