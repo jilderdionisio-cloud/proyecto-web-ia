@@ -80,7 +80,95 @@ La carpeta correcta es `/ (root)` porque `index.html`, `style.css` y `script.js`
 **Prompt 2 – Funcionalidad extra, pruebas y entrega (Marjorie):**
 > "Completar la funcionalidad extra, las pruebas, la documentación y la preparación de la entrega… Implementa un modo claro y oscuro que… mantenga la preferencia del usuario mediante localStorage… No afirmes haber probado comportamientos que no hayas ejecutado."
 
-**Prompt 3 – ✏️ Por completar (`jilderdionisio-cloud`):** pegar aquí un prompt real usado para crear la estructura, la consulta a la API, la búsqueda o los favoritos.
+**Prompt 3 – Estructura inicial del explorador (Alex):**
+> "Actúa como mi desarrollador principal para el proyecto académico 'Explorador interactivo de información'… El repositorio ya está creado y configurado como público. NO vuelvas a crearlo ni cambies su nombre… Inspecciona el estado actual del repositorio antes de modificarlo… Crea o completa index.html con una estructura semántica… Usa el mensaje: 'feat: crear estructura inicial del explorador'… No afirmes que has realizado un commit si no aparece efectivamente en el repositorio."
+
+Este prompt dio origen al commit `feat: crear estructura inicial del explorador`.
+
+<details>
+<summary>Ver el texto completo del Prompt 3</summary>
+
+```text
+Actúa como mi desarrollador principal para el proyecto académico "Explorador interactivo de información".
+REPOSITORIO EXISTENTE:
+https://github.com/jilderdionisio-cloud/proyecto-web-ia
+IMPORTANTE: El repositorio ya está creado y configurado como público. NO vuelvas a crearlo ni cambies su nombre. Debes continuar desde su estado actual.
+OBJETIVO:
+Desarrollar una aplicación web que consuma la API pública de Rick and Morty y permita explorar personajes de forma interactiva.
+API:
+https://rickandmortyapi.com/documentation
+Endpoint principal:
+https://rickandmortyapi.com/api/character
+TECNOLOGÍAS OBLIGATORIAS:
+- HTML
+- CSS
+- JavaScript puro
+- fetch()
+- localStorage
+- GitHub Pages
+No utilices React, Vue, Angular, frameworks ni dependencias innecesarias.
+MI FORMA DE TRABAJO:
+Utilizo GitHub y su editor web para modificar archivos. No quiero depender de Visual Studio Code ni de una terminal local. Si necesitas realizar cambios mediante herramientas disponibles en Codex, debes explicarme cómo quedarán reflejados en GitHub y qué pasos debo realizar desde la web cuando sea necesario.
+PRIMERA FASE:
+1. Inspecciona el estado actual del repositorio antes de modificarlo.
+2. Identifica los archivos que ya existen y revisa si hay código que deba conservarse.
+3. No sobrescribas trabajo existente sin justificarlo.
+4. Crea o completa index.html con una estructura semántica para:
+   - Encabezado y navegación.
+   - Buscador por nombre.
+   - Filtros por estado y especie.
+   - Controles para ordenar resultados.
+   - Zona de mensajes de carga y errores.
+   - Contenedor de tarjetas de personajes.
+   - Sección de favoritos.
+   - Botón para alternar el tema claro y oscuro.
+   - Pie de página.
+5. Conecta correctamente style.css y script.js mediante rutas relativas.
+6. No escribas personajes manualmente: los datos deben proceder de la API.
+GESTIÓN DE VERSIONES:
+- Realiza un commit real de este avance, si tienes acceso autorizado para hacerlo.
+- Usa el mensaje: "feat: crear estructura inicial del explorador".
+- Si no puedes hacer el commit directamente, entrégame los pasos exactos para guardarlo desde GitHub.
+- No afirmes que has realizado un commit si no aparece efectivamente en el repositorio.
+Al terminar, explícame qué archivos modificaste, qué contiene cada uno y qué debo comprobar en GitHub. No avances todavía a la implementación completa de todas las funcionalidades. Primero deja la estructura inicial correctamente guardada.
+```
+
+</details>
+
+**Prompt adicional – Planteamiento inicial del proyecto (Alex):**
+> "Actúa como un desarrollador web que enseña a principiantes. Vamos a desarrollar un proyecto académico llamado 'Explorador interactivo de información' utilizando exclusivamente el editor web de GitHub… MI RESPONSABILIDAD: Comenzar el proyecto desde cero y crear index.html… Explícame cada sección con palabras sencillas para que pueda defender el proyecto en clase."
+
+<details>
+<summary>Ver el texto completo del prompt adicional</summary>
+
+```text
+Actúa como un desarrollador web que enseña a principiantes. Vamos a desarrollar un proyecto académico llamado "Explorador interactivo de información" utilizando exclusivamente el editor web de GitHub, sin Visual Studio Code, terminal, Git Bash ni instalaciones locales.
+El proyecto utilizará la API pública de Rick and Morty: https://rickandmortyapi.com/documentation
+REQUISITOS:
+- HTML, CSS y JavaScript puro.
+- Archivos obligatorios: index.html, style.css, script.js y README.md.
+- Mostrar personajes reales obtenidos de la API.
+- Buscador, filtros, favoritos y localStorage.
+- Mensajes de carga, errores y resultados vacíos.
+- Diseño adaptable a computadoras y celulares.
+- Publicación mediante GitHub Pages.
+- Al menos 6 commits reales, 2 Issues y 1 Pull Request.
+- Contribuciones identificables de dos integrantes.
+- Una funcionalidad extra que implementaremos posteriormente.
+MI RESPONSABILIDAD:
+Comenzar el proyecto desde cero y crear index.html. Primero, explícame brevemente cómo crear el repositorio público proyecto-web-ia desde la web de GitHub y cómo comprobar que estoy usando mi propia cuenta.
+Después, entrégame únicamente el código completo de index.html, con una estructura semántica, encabezado, navegación, buscador, controles de filtros, zona de mensajes, contenedor para tarjetas de personajes, sección de favoritos y pie de página.
+Conecta los archivos style.css y script.js mediante sus rutas relativas correctas. No escribas los personajes manualmente en HTML: JavaScript los obtendrá de la API.
+INDICACIONES:
+1. Dame instrucciones paso a paso para crear el archivo usando el editor web de GitHub.
+2. Indícame qué mensaje de commit debo utilizar.
+3. Debo guardar este primer avance antes de continuar con los demás archivos.
+4. No generes todavía una solución completa en un solo archivo.
+5. Explícame cada sección con palabras sencillas para que pueda defender el proyecto en clase.
+Comencemos únicamente con la creación del repositorio y el primer archivo.
+```
+
+</details>
 
 ## 9. Una respuesta de IA que necesitó correcciones
 
