@@ -141,7 +141,7 @@ Lo más valioso fue que no solo obtuve el código: también entendí cómo funci
 
 Para mí, la IA funciona mejor cuando le damos instrucciones claras, revisamos sus respuestas y la usamos como apoyo para aprender, no solo para terminar más rápido.
 
-### `jilderdionisio-cloud`
+### Alex Dionisio Rojas (`jilderdionisio-cloud`)
 
 ✏️ **Por completar con sus propias palabras.**
 
