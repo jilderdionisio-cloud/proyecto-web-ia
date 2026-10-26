@@ -125,12 +125,25 @@ Cómo funciona:
 
 ## 12. Reflexión sobre el uso de IA
 
-✏️ **Por completar por el equipo, con sus propias palabras.** Preguntas que pueden guiarles:
+### Marjorie Alejandra Xeque Pech (`Marjoxp`)
 
-- ¿En qué tareas les ahorró más tiempo la IA?
-- ¿Qué tuvieron que revisar o corregir de lo que generó?
-- ¿Por qué es importante probar el código en lugar de confiar en la respuesta?
-- ¿Qué aprendieron que ahora podrían explicar sin ayuda?
+La inteligencia artificial me parece una herramienta magnífica y de gran ayuda. Potencia nuestros trabajos y proyectos, como este explorador.
+
+Me ayudó a avanzar mucho más rápido en tareas que me habrían llevado bastante tiempo: diseñar todo el `style.css` con los temas claro y oscuro, implementar el modo oscuro con `localStorage`, ejecutar pruebas en distintos tamaños de pantalla y redactar la documentación.
+
+También aprendí que la IA no sustituye nuestra revisión:
+
+- **No siempre acierta a la primera.** La primera versión del diseño móvil tenía un encabezado demasiado grande y tarjetas enormes. Lo corregimos al revisar las capturas.
+- **Hay que comprobar lo que dice.** Cuando el agente de mi compañero indicó que debía reconectar GitHub, verificamos en el repositorio que el cambio ya se había subido correctamente.
+- **Una prueba con datos simulados no es igual que una con datos reales.** Por eso repetimos las pruebas en la URL pública con la API real y en mi celular.
+
+Lo más valioso fue que no solo obtuve el código: también entendí cómo funciona y puedo explicarlo, por ejemplo cómo el atributo `data-tema` y las variables de CSS cambian el color de toda la página.
+
+Para mí, la IA funciona mejor cuando le damos instrucciones claras, revisamos sus respuestas y la usamos como apoyo para aprender, no solo para terminar más rápido.
+
+### `jilderdionisio-cloud`
+
+✏️ **Por completar con sus propias palabras.**
 
 ## 13. Contribuciones
 
