@@ -391,6 +391,408 @@ button {
 }
 
 /* -------------------------------------------------------------------------
+   5. Buscador, filtros y botones
+   ------------------------------------------------------------------------- */
+.controles .contenedor {
+  padding: clamp(1.1rem, 0.8rem + 1.5vw, 1.75rem);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-grande);
+  background-color: var(--color-superficie);
+  box-shadow: var(--sombra-tarjeta);
+}
+
+.controles h2 {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-texto-suave);
+}
+
+input[type="search"],
+select {
+  width: 100%;
+  min-height: var(--altura-control);
+  padding: 0.5rem 0.85rem;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-pequeno);
+  background-color: var(--color-fondo);
+  transition: border-color var(--transicion), box-shadow var(--transicion);
+}
+
+input[type="search"]::placeholder {
+  color: var(--color-texto-suave);
+  opacity: 0.85;
+}
+
+input[type="search"]:hover,
+select:hover {
+  border-color: var(--color-secundario);
+}
+
+input[type="search"]:focus-visible,
+select:focus-visible {
+  outline: none;
+  border-color: var(--color-enfoque);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-enfoque) 35%, transparent);
+}
+
+select {
+  appearance: none;
+  padding-right: 2.5rem;
+  background-image:
+    linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position:
+    calc(100% - 1.1rem) 50%,
+    calc(100% - 0.75rem) 50%;
+  background-size: 0.35rem 0.35rem;
+  background-repeat: no-repeat;
+}
+
+.formulario-busqueda {
+  margin-bottom: 1.25rem;
+}
+
+.formulario-busqueda__grupo {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.formulario-busqueda__grupo input {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Botón principal: Buscar */
+.formulario-busqueda button {
+  flex: none;
+  min-height: var(--altura-control);
+  padding-inline: 1.4rem;
+  border: 0;
+  border-radius: var(--radio-pequeno);
+  background-color: var(--color-acento-fuerte);
+  color: var(--color-acento-texto);
+  font-weight: 700;
+  transition: filter var(--transicion), box-shadow var(--transicion), transform var(--transicion);
+}
+
+.formulario-busqueda button:hover {
+  filter: brightness(1.06);
+  box-shadow: var(--brillo-portal), 0 4px 12px rgb(151 206 76 / 0.35);
+}
+
+.formulario-busqueda button:active {
+  transform: translateY(1px);
+}
+
+.filtros {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  align-items: end;
+  gap: 1rem;
+}
+
+/* Botón secundario: Limpiar controles */
+#boton-limpiar {
+  min-height: var(--altura-control);
+  padding-inline: 1rem;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-pequeno);
+  background-color: transparent;
+  font-weight: 600;
+  color: var(--color-texto);
+  transition: border-color var(--transicion), color var(--transicion), background-color var(--transicion);
+}
+
+#boton-limpiar:hover {
+  border-color: var(--color-secundario);
+  color: var(--color-secundario);
+  background-color: var(--color-fondo-alterno);
+}
+
+/* -------------------------------------------------------------------------
+   6. Mensajes de carga, error y resultados vacíos
+   ------------------------------------------------------------------------- */
+.mensajes p {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1rem 0 0;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  background-color: var(--color-superficie);
+  font-weight: 600;
+}
+
+/* Carga: portal giratorio */
+#mensaje-carga::before {
+  content: "";
+  flex: none;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  background: conic-gradient(var(--color-acento-fuerte), transparent 75%);
+  -webkit-mask: radial-gradient(circle, transparent 45%, #000 48%);
+  mask: radial-gradient(circle, transparent 45%, #000 48%);
+  animation: girar-portal 0.9s linear infinite;
+}
+
+#mensaje-error {
+  border-color: var(--color-error-borde);
+  background-color: var(--color-error-fondo);
+  color: var(--color-error-texto);
+}
+
+#mensaje-error::before {
+  content: "!";
+  content: "!" / "";
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: var(--color-error-texto);
+  color: var(--color-superficie);
+  font-weight: 800;
+}
+
+#mensaje-vacio {
+  border-style: dashed;
+  color: var(--color-texto-suave);
+}
+
+#mensaje-vacio::before {
+  content: "⌀";
+  content: "⌀" / "";
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--color-secundario);
+}
+
+@keyframes girar-portal {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* -------------------------------------------------------------------------
+   7. Cuadrícula y tarjetas de personajes
+   Estructura generada por script.js:
+   article.tarjeta-personaje > img + div.tarjeta-personaje__contenido
+     > h3 + p (Especie) + p (Estado) + p (Origen) + button.boton-favorito
+   ------------------------------------------------------------------------- */
+.grid-personajes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+  gap: clamp(1rem, 0.75rem + 1vw, 1.5rem);
+}
+
+/* Aviso de "Aún no has agregado personajes favoritos." (p dentro del grid) */
+.grid-personajes > p {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 1.5rem;
+  border: 2px dashed var(--color-borde);
+  border-radius: var(--radio);
+  text-align: center;
+  color: var(--color-texto-suave);
+}
+
+.tarjeta-personaje {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  background-color: var(--color-superficie);
+  box-shadow: var(--sombra-tarjeta);
+  transition: transform var(--transicion), box-shadow var(--transicion), border-color var(--transicion);
+}
+
+.tarjeta-personaje img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center top;
+  /* Fondo visible mientras carga la imagen o si no hay URL válida */
+  background-color: var(--color-fondo-alterno);
+}
+
+.tarjeta-personaje__contenido {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem 1.1rem 1.1rem;
+}
+
+.tarjeta-personaje h3 {
+  margin-bottom: 0.25rem;
+  font-size: 1.15rem;
+  overflow-wrap: anywhere;
+}
+
+.tarjeta-personaje__contenido p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--color-texto-suave);
+  overflow-wrap: anywhere;
+}
+
+.tarjeta-personaje__contenido p strong {
+  font-family: var(--fuente-tecnica);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-texto);
+}
+
+/* Estado (segundo párrafo): insignia con punto de color.
+   Sin datos adicionales se muestra en gris neutro. */
+.tarjeta-personaje__contenido p:nth-of-type(2) {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 0.45rem;
+  margin-block: 0.15rem;
+  padding: 0.2rem 0.7rem 0.2rem 0.6rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background-color: var(--color-desconocido-fondo);
+  color: var(--color-texto);
+  font-weight: 600;
+}
+
+.tarjeta-personaje__contenido p:nth-of-type(2)::before {
+  content: "";
+  flex: none;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background-color: var(--color-desconocido);
+}
+
+/* Colores por estado. Se activan cuando la tarjeta tiene data-estado
+   (ver la propuesta de cambio para script.js). Cada estado combina
+   color + forma del indicador para no depender solo del color. */
+.tarjeta-personaje[data-estado="alive"] .tarjeta-personaje__contenido p:nth-of-type(2) {
+  border-color: color-mix(in srgb, var(--color-vivo) 45%, transparent);
+  background-color: var(--color-vivo-fondo);
+}
+
+.tarjeta-personaje[data-estado="alive"] .tarjeta-personaje__contenido p:nth-of-type(2)::before {
+  background-color: var(--color-vivo);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-vivo) 30%, transparent);
+}
+
+.tarjeta-personaje[data-estado="dead"] .tarjeta-personaje__contenido p:nth-of-type(2) {
+  border-color: color-mix(in srgb, var(--color-muerto) 45%, transparent);
+  background-color: var(--color-muerto-fondo);
+}
+
+.tarjeta-personaje[data-estado="dead"] .tarjeta-personaje__contenido p:nth-of-type(2)::before {
+  border-radius: 2px;
+  background-color: var(--color-muerto);
+  transform: rotate(45deg);
+}
+
+.tarjeta-personaje[data-estado="dead"] img {
+  filter: grayscale(0.55);
+}
+
+.tarjeta-personaje[data-estado="unknown"] .tarjeta-personaje__contenido p:nth-of-type(2)::before {
+  background-color: transparent;
+  border: 2px dashed var(--color-desconocido);
+}
+
+/* Botón de favoritos */
+.boton-favorito {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 100%;
+  min-height: var(--altura-control);
+  margin-top: auto;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--color-favorito-borde);
+  border-radius: var(--radio-pequeno);
+  background-color: transparent;
+  color: var(--color-favorito);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.25;
+  transition: background-color var(--transicion), border-color var(--transicion), color var(--transicion);
+}
+
+/* Separación respecto a los datos, sin romper margin-top: auto */
+.tarjeta-personaje__contenido p:last-of-type {
+  margin-bottom: 0.75rem;
+}
+
+.boton-favorito::before {
+  content: "☆";
+  content: "☆" / "";
+  font-size: 1.15em;
+  line-height: 1;
+}
+
+.boton-favorito:hover {
+  background-color: var(--color-favorito-fondo);
+}
+
+/* Personaje ya marcado como favorito:
+   - siempre dentro de la sección Favoritos;
+   - en la lista general cuando el botón tenga data-favorito="true". */
+#contenedor-favoritos .boton-favorito,
+.boton-favorito[data-favorito="true"] {
+  background-color: var(--color-favorito-fondo);
+}
+
+#contenedor-favoritos .boton-favorito::before,
+.boton-favorito[data-favorito="true"]::before {
+  content: "★";
+  content: "★" / "";
+}
+
+/* -------------------------------------------------------------------------
+   8. Sección de favoritos
+   ------------------------------------------------------------------------- */
+.favoritos {
+  margin-top: 1rem;
+  border-top: 1px solid var(--color-borde);
+  background-color: var(--color-fondo-alterno);
+}
+
+.favoritos h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.favoritos h2::before {
+  content: "★";
+  content: "★" / "";
+  color: var(--color-favorito);
+}
+
+.favoritos .contenedor > p {
+  color: var(--color-texto-suave);
+}
+
+#contenedor-favoritos .tarjeta-personaje {
+  border-color: var(--color-favorito-borde);
+}
+
+/* -------------------------------------------------------------------------
    9. Pie de página
    ------------------------------------------------------------------------- */
 .pie-pagina {
@@ -407,6 +809,17 @@ button {
 
 .pie-pagina p:last-child {
   margin-bottom: 0;
+}
+
+/* -------------------------------------------------------------------------
+   10. Interacciones solo en dispositivos con puntero fino (hover real)
+   ------------------------------------------------------------------------- */
+@media (hover: hover) and (pointer: fine) {
+  .tarjeta-personaje:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-acento);
+    box-shadow: var(--sombra-tarjeta-hover);
+  }
 }
 
 /* -------------------------------------------------------------------------
