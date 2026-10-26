@@ -2,8 +2,10 @@
 
 const API_URL = "https://rickandmortyapi.com/api/character";
 const CLAVE_FAVORITOS = "explorador-rick-morty-favoritos";
+const CLAVE_TEMA = "explorador-rick-morty-tema";
 
 const elementos = {
+  botonTema: document.querySelector("#boton-tema"),
   formularioBusqueda: document.querySelector("#formulario-busqueda"),
   buscador: document.querySelector("#buscador"),
   filtroEstado: document.querySelector("#filtro-estado"),
@@ -310,5 +312,47 @@ function manejarAccionFavorito(evento) {
 elementos.contenedorPersonajes.addEventListener("click", manejarAccionFavorito);
 elementos.contenedorFavoritos.addEventListener("click", manejarAccionFavorito);
 
+/* ---------- Modo claro y oscuro ---------- */
+
+// Aplica el tema poniendo data-tema en <html>; style.css usa ese atributo.
+// aria-pressed="true" indica a los lectores de pantalla que el modo oscuro está activo.
+function aplicarTema(tema) {
+  document.documentElement.dataset.tema = tema;
+  elementos.botonTema.setAttribute("aria-pressed", String(tema === "oscuro"));
+}
+
+// Usa el tema guardado; si no hay ninguno, sigue la preferencia del sistema.
+function obtenerTemaInicial() {
+  try {
+    const temaGuardado = localStorage.getItem(CLAVE_TEMA);
+
+    if (temaGuardado === "claro" || temaGuardado === "oscuro") {
+      return temaGuardado;
+    }
+  } catch (error) {
+    console.error("No fue posible recuperar el tema:", error);
+  }
+
+  const prefiereOscuro = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  return prefiereOscuro ? "oscuro" : "claro";
+}
+
+function guardarTema(tema) {
+  try {
+    localStorage.setItem(CLAVE_TEMA, tema);
+  } catch (error) {
+    console.error("No fue posible guardar el tema:", error);
+  }
+}
+
+elementos.botonTema.addEventListener("click", () => {
+  const temaActual = document.documentElement.dataset.tema;
+  const nuevoTema = temaActual === "oscuro" ? "claro" : "oscuro";
+
+  aplicarTema(nuevoTema);
+  guardarTema(nuevoTema);
+});
+
+aplicarTema(obtenerTemaInicial());
 renderizarFavoritos();
 consultarPersonajes();
