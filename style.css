@@ -823,6 +823,114 @@ select {
 }
 
 /* -------------------------------------------------------------------------
+   11. Diseño adaptable (mobile first)
+   ------------------------------------------------------------------------- */
+
+/* Celulares: navegación visible en su propia fila, controles a ancho completo */
+@media (max-width: 37.49em) {
+  /* En pantallas pequeñas el encabezado ocupa dos filas; fijo restaría
+     demasiado espacio, así que se desplaza con la página. */
+  .encabezado {
+    position: static;
+  }
+
+  .encabezado__contenido {
+    gap: 0.5rem;
+    padding-block: 0.6rem;
+  }
+
+  .logo {
+    gap: 0.45rem;
+    font-size: 0.95rem;
+  }
+
+  .logo::before {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  /* El botón de tema queda junto al logo; la navegación baja a otra fila */
+  .boton-tema {
+    order: 2;
+    margin-inline-start: auto;
+    gap: 0.35rem;
+    padding-inline: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .navegacion {
+    order: 3;
+    flex-basis: 100%;
+    gap: 0.5rem;
+    margin-inline-start: 0;
+  }
+
+  .navegacion a {
+    flex: 1;
+    justify-content: center;
+    background-color: var(--color-fondo-alterno);
+  }
+
+  #inicio,
+  #personajes,
+  #favoritos {
+    scroll-margin-top: 0.5rem;
+  }
+
+  /* Tarjetas horizontales: imagen a la izquierda, datos a la derecha.
+     Muestran más personajes por pantalla sin ocultar ningún dato. */
+  .tarjeta-personaje {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+  }
+
+  .tarjeta-personaje img {
+    height: 100%;
+    min-height: 6.5rem;
+    aspect-ratio: auto;
+  }
+
+  .tarjeta-personaje__contenido {
+    padding: 0.8rem 0.9rem 0.9rem;
+  }
+
+  .presentacion::before {
+    right: -9rem;
+    opacity: 0.25;
+  }
+
+  .formulario-busqueda__grupo {
+    flex-direction: column;
+  }
+
+  .formulario-busqueda button,
+  #boton-limpiar {
+    width: 100%;
+  }
+}
+
+/* Celulares muy angostos: el texto del botón de tema se mantiene visible */
+@media (max-width: 22em) {
+  .boton-tema {
+    font-size: 0.9rem;
+  }
+}
+
+/* Tabletas */
+@media (min-width: 37.5em) and (max-width: 59.99em) {
+  .grid-personajes {
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  }
+}
+
+/* Computadoras: filtros en una sola fila */
+@media (min-width: 60em) {
+  .filtros {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+  }
+}
+
+/* -------------------------------------------------------------------------
    12. Preferencias de accesibilidad
    ------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
