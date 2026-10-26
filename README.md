@@ -154,7 +154,7 @@ Se hicieron tres rondas de pruebas:
 
 - **A. Automáticas (Playwright, Chromium):** con respuestas simuladas con el mismo formato que la API real.
 - **B. URL pública con la API real:** en https://jilderdionisio-cloud.github.io/proyecto-web-ia/ (25/10/2026), desde un navegador de escritorio.
-- **C. Celular real:** Motorola Edge 50 Pro, en la URL pública.
+- **C. Celular real:** Motorola Edge 50 Pro con Chrome, en la URL pública.
 
 | # | Prueba | Resultado | Dónde |
 |---|---|---|---|
