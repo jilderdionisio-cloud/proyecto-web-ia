@@ -136,7 +136,7 @@ Cómo funciona:
 
 Tomadas del historial de commits del repositorio.
 
-**`jilderdionisio-cloud`** ✏️ *(agregar nombre completo)*
+**Alex Dionisio Rojas (`jilderdionisio-cloud`)**
 - Configuración inicial del repositorio.
 - Estructura HTML del explorador.
 - Consulta a la API y creación de tarjetas.
